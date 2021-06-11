@@ -13,6 +13,7 @@
 		0139AAE02673725500CD61CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0139AADE2673725500CD61CC /* Main.storyboard */; };
 		0139AAE22673725900CD61CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0139AAE12673725900CD61CC /* Assets.xcassets */; };
 		0139AAE52673725900CD61CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0139AAE32673725900CD61CC /* LaunchScreen.storyboard */; };
+		0139AAEF2673736300CD61CC /* SQLiteDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139AAEE2673736300CD61CC /* SQLiteDBManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0139AAE12673725900CD61CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0139AAE42673725900CD61CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0139AAE62673725900CD61CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0139AAEE2673736300CD61CC /* SQLiteDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		0139AAD72673725500CD61CC /* Asyn SQLiteDB Operation */ = {
 			isa = PBXGroup;
 			children = (
+				0139AAED2673734B00CD61CC /* SQLite DB */,
 				0139AAD82673725500CD61CC /* AppDelegate.swift */,
 				0139AADA2673725500CD61CC /* SceneDelegate.swift */,
-				0139AADC2673725500CD61CC /* ViewController.swift */,
-				0139AADE2673725500CD61CC /* Main.storyboard */,
+				0139AAF22673928700CD61CC /* Controllers */,
+				0139AAF42673929400CD61CC /* Views */,
 				0139AAE12673725900CD61CC /* Assets.xcassets */,
 				0139AAE32673725900CD61CC /* LaunchScreen.storyboard */,
 				0139AAE62673725900CD61CC /* Info.plist */,
 			);
 			path = "Asyn SQLiteDB Operation";
+			sourceTree = "<group>";
+		};
+		0139AAED2673734B00CD61CC /* SQLite DB */ = {
+			isa = PBXGroup;
+			children = (
+				0139AAEE2673736300CD61CC /* SQLiteDBManager.swift */,
+			);
+			path = "SQLite DB";
+			sourceTree = "<group>";
+		};
+		0139AAF22673928700CD61CC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0139AADC2673725500CD61CC /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0139AAF42673929400CD61CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0139AADE2673725500CD61CC /* Main.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +167,7 @@
 				0139AADD2673725500CD61CC /* ViewController.swift in Sources */,
 				0139AAD92673725500CD61CC /* AppDelegate.swift in Sources */,
 				0139AADB2673725500CD61CC /* SceneDelegate.swift in Sources */,
+				0139AAEF2673736300CD61CC /* SQLiteDBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
