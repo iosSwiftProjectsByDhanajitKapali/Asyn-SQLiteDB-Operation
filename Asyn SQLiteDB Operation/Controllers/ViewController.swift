@@ -44,12 +44,24 @@ class ViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if let userName = nameTextField.text, !userName.isEmpty {
+            
+            self.saveButton.isEnabled = false
+            self.deleteButton.isEnabled = false
+            self.saveButton.setTitle("Saving...", for: .normal)
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            
             //dispatch work item
             var dispatchWorkItem : DispatchWorkItem?
             dispatchWorkItem = DispatchWorkItem {
                 self.insertData(userName)
             }
             dispatchWorkItem?.notify(queue: .main){
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.saveButton.isEnabled = true
+                self.deleteButton.isEnabled = true
+                self.saveButton.setTitle("Save", for: .normal)
                 print("Done executing WorkItem")
             }
             //dispatchWorkItem?.perform()
@@ -60,37 +72,33 @@ class ViewController: UIViewController {
     
     func insertData(_ userName : String) {
         print("initiating insertion of users")
-        DispatchQueue.main.async {
-            self.saveButton.isEnabled = false
-            self.deleteButton.isEnabled = false
-            self.saveButton.setTitle("Saving...", for: .normal)
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-        }
-      
         for i in 1...1000{
             let name = "\(i)_\(userName)"
             dbManager?.insertDataToDB(name)
         }
         print("insertion of users complete")
-        DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
-            self.saveButton.isEnabled = true
-            self.deleteButton.isEnabled = true
-            self.saveButton.setTitle("Save", for: .normal)
-        }
-        
     } //:insertData
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
         if let userName = nameTextField.text, !userName.isEmpty {
+            
+            self.deleteButton.isEnabled = false
+            self.saveButton.isEnabled = false
+            self.deleteButton.setTitle("Deleting...", for: .normal)
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            
             //dispatch work item
             var dispatchWorkItem : DispatchWorkItem?
             dispatchWorkItem = DispatchWorkItem {
                 self.deleteData(userName)
             }
             dispatchWorkItem?.notify(queue: .main){
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.deleteButton.isEnabled = true
+                self.saveButton.isEnabled = true
+                self.deleteButton.setTitle("Delete", for: .normal)
                 print("Done executing WorkItem")
             }
             //dispatchWorkItem?.perform()
@@ -101,25 +109,11 @@ class ViewController: UIViewController {
     
     func deleteData(_ userName : String)  {
         print("initiating deletion of users")
-        DispatchQueue.main.async {
-            self.deleteButton.isEnabled = false
-            self.saveButton.isEnabled = false
-            self.deleteButton.setTitle("Deleting...", for: .normal)
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-        }
         for i in 1...1000{
             let name = "\(i)_\(userName)"
             dbManager?.deleteDataFromDB(with: name)
         }
         print("deletion of users complete")
-        DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
-            self.deleteButton.isEnabled = true
-            self.saveButton.isEnabled = true
-            self.deleteButton.setTitle("Delete", for: .normal)
-        }
     } //:deleteData
     
    
